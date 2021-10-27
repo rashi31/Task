@@ -40,27 +40,19 @@
     <input type ='text' id = 'myInput' onkeyup='myFunction()' placeholder='start searching' title='places'>
     <table id='myTable'>
         <tr class='header'>
-            <th style='width:20%'> PlaceId </th>
-            <th style='width:20%;'>PlaceName</th>
-            <th style='width:25%;'>CountryId</th>
-            <th style='width:20%;'>RegionId</th>
-            <th style='width:20%;'>CityId</th>
-            <th style='width:20%;'>CountryName</th> 
+            <th style='width:20%'> No. </th>
+            <th style='width:20%;'>Place</th>
+            <th style='width:25%;'>Country</th>
         </tr>
         <tr>
-            <td>DEl-sky</td>
+            <td>1</td>
             <td>New Delhi</td>
-            <td>IN-sky</td>
-            <td></td>
-            <td>IDEL-sky</td>
             <td>India</td>
+            
         </tr>
         <tr>
-            <td>HXD-sky</td>
+            <td>2</td>
             <td>Delingha</td>
-            <td>CN-sky</td>
-            <td></td>
-            <td>HDXA-sky</td>
             <td>China</td>
         </tr>
     </table>
@@ -84,8 +76,25 @@
         }       
     }
 }
-</script>
-        
 
+var axios = require("axios").default;
+
+var options = {
+  method: 'GET',
+  url: 'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/',
+  params: {query: 'Delhi'},
+  headers: {
+    'x-rapidapi-key': '50184fe98amshcaf3ea765e61974p130970jsnd8a63ac8f548',
+    'x-rapidapi-host': 'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com'
+  }
+};
+
+axios.request(options).then(function (response) {
+	console.log(response.data);
+}).catch(function (error) {
+	console.error(error);
+});
+
+</script>
 </body>
 </html>
